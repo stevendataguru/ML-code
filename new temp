@@ -27,3 +27,16 @@ def newage(col):
     else:
         return Age
 train['newages']=train[['Age','Sex','Pclass']].apply(newage,axis=1)
+
+
+
+def embarked(col):
+    Embarked = col[0]
+    if Embarked=='S':
+        return 1
+    if Embarked=='C':
+        return 2
+    if Embarked=='Q':
+        return 3
+        
+train['newembark']=train[['Embarked']].apply(embarked,axis=1)
