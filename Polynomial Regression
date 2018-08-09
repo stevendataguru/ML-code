@@ -1,0 +1,40 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline 
+
+X= df['XXX]
+y= df['YYY']
+
+from scipy.interpolate import *
+p1= np.polyfit(X,y,1)     ##1 is how much degree
+from matplotlib.pyplot import *
+plot(X,y,'o')
+plot(X,np.polyval(pl,X),'r-')
+
+plot(X,y,'o')
+xp=np.linspace(0.05,0.22,100)     ##(start,end(data range), how many points)
+plot(xp,np.polyval(p1,xp),'r-')
+
+from scipy.stats import *
+slope,intercept,r_value,p_value,std_err = linregress(X,y)
+print(pow(r_value,2))
+print(p_value)
+
+
+
+X= df['Time on App']
+y= df['Yearly Amount Spent']
+
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.pipeline import Pipeline
+import numpy as np
+model = Pipeline([('poly', PolynomialFeatures(degree=3)),
+                  ('linear', LinearRegression(fit_intercept=False))])
+# fit to an order-3 polynomial data
+x = df['XXXX']
+y = 3 - 2 * x + x ** 2 - x ** 3
+model = model.fit(x[:, np.newaxis], y)
+model.named_steps['linear'].coef_
