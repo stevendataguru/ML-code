@@ -1,0 +1,29 @@
+df.isnull().sum()
+a=df.groupby('columns').nunique()
+a=df.groupby('columns').median()
+df['column'].value_counts()
+df['column']= df['column'].fillna('S')
+df.dropna(subset=['column']).median()     **this column’s median without na
+
+pd.get_dummies(df ['Col'],drop_first=True)
+
+def newage(col):
+    Age=col[0]
+    Sex=col[1]
+    Pclass=col[2]
+    if pd.isnull(Age):
+        if Sex=='male' and Pclass==1:
+            return 37
+        if Sex=='male' and Pclass==2:
+            return 29
+        if Sex=='male' and Pclass==3:
+            return 24
+        if Sex=='female' and Pclass==1:
+            return 36
+        if Sex=='female' and Pclass==2:
+            return 29
+        if Sex=='female' and Pclass==3:
+            return 24
+    else:
+        return Age
+train['newages']=train[['Age','Sex','Pclass']].apply(newage,axis=1)
