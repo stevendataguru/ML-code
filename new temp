@@ -1,12 +1,31 @@
+# check if there is null in table
 df.isnull().sum()
+
+# group by and count/median
 a=df.groupby('columns').nunique()
 a=df.groupby('columns').median()
-df['column'].value_counts()
-df['column']= df['column'].fillna('S')
-df.dropna(subset=['column']).median()     **this column’s median without na
 
+# distinct count 
+df['column'].value_counts()
+
+# fill null value
+df['column']= df['column'].fillna('S')
+
+# get this col's median disregards null value
+df.dropna(subset=['column']).median()     
+
+# get dummies
 pd.get_dummies(df ['Col'],drop_first=True)
 
+# change datatype
+df['col'] = df.col.astype(float)
+
+# round entire table
+df=df.round(decimals=2)
+
+
+
+# multi cols condition function
 def newage(col):
     Age=col[0]
     Sex=col[1]
@@ -26,10 +45,10 @@ def newage(col):
             return 24
     else:
         return Age
+        
 train['newages']=train[['Age','Sex','Pclass']].apply(newage,axis=1)
 
-
-
+# signle col condition function
 def embarked(col):
     Embarked = col[0]
     if Embarked=='S':
@@ -40,3 +59,5 @@ def embarked(col):
         return 3
         
 train['newembark']=train[['Embarked']].apply(embarked,axis=1)
+
+
