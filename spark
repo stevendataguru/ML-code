@@ -1,0 +1,77 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
+
+df = pd.read_
+df.head()  /  df.info()  /  df.describe()  /  df.columns
+sns.pairplot(df)
+
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+
+SQL:
+import pandas as pd
+import pyodbc
+server = ""
+db = ""
+con = pyodbc.connect('DRIVER={SQL Server};SERVER=' + server + ';DATABASE=' + db)
+query = '''       '''
+df = pd.read_sql(query, con)
+
+
+save to csv/excel:
+df.to_csv('new.csv')
+df.to_excel('new.xlsx')
+
+read from URL table:
+import requests
+import pandas as pd
+
+url = 'http://www.ffiec.gov/census/report.aspx?year=2011&state=01&report=demographic&msa=11500'
+html = requests.get(url).content
+df_list = pd.read_html(html)
+df = df_list[-1]
+print (df)
+df.to_csv('my data.csv')
+
+import URL:
+https://stackoverflow.com/questions/10556048/how-to-extract-tables-from-websites-in-python
+https://stackoverflow.com/questions/3969726/attributeerror-module-object-has-no-attribute-urlopen
+
+
+SQL Join, group by, pivot:
+df=pd.merge(df1,df2,how='inner',left_on=['XXX'],right_on=['YYY'])
+
+newtable = pd.DataFrame(df.groupby(' ')[ ' '].count())       *** beaware of table name, .count()/mean()…
+
+newtable = df.pivot_table(index='the index want to pivot', columns=' ', values=' ')
+TableA = TableA.join(TableB['column'])      **data+data
+
+
+SQL date filter:
+df.loc[(df['column'] == 'value') & (df['other column'] == 'value')]
+df.loc[(df['column'].isin('value')]
+df['Date'] = pd.to_datetime(df['Date'])  
+abc=(df['Date']>= ' ')& (df['Date'])
+df.drop(columns=['X', 'C'])   or  df.drop('column',1)
+df= df.fillna(0)     
+
+df['XXX'] = df['YYY'].apply(function)
+
+Grid:
+g = sns.FacetGrid(df,col='XXX')
+g.map(plt.hist,'YY')
+
+Seaborn:
+sns.set_style('whitegrid')
+plt.figure(figsize=(11,7))
+
+sns.distplot(table['column'])
+plt.xlabel('Age')
+
+sns.jointplot(x='1',y='2',data=df)
+
+sns.distplot(df[df['credit.policy']==1]['fico'],bins=30)
+sns.distplot(df[df['credit.policy']==0]['fico'],bins=30)
