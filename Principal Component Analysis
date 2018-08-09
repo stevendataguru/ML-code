@@ -1,0 +1,32 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
+
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+scaler.fit(df)
+scaled_data = scaler.transform(df)
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2)
+pca.fit(scaled_data)
+x_pca = pca.transform(scaled_data)
+*** x_pca    fit this into other ML
+
+scaled_data.shape
+
+x_pca.shape    ##make sure its 2
+
+df2 = pd.DataFrame(x_pca, columns=['a', 'b'])   ##make it as a table
+
+#following is not necessary 
+plt.figure(figsize=(8,6))
+plt.scatter(x_pca[:,0],x_pca[:,1], c= T[' '])  ## pass a wanted column to see scatter. T can be df2!)
+plt.xlabel('First Component')
+plt.xlabel('Second Component')
+
+df_comp = pd.DataFrame(pca.components_,columns=T['XX'])  ## pass a wanted column to see scatter. T can be df2!)
+plt.figure(figsize=(12,6))
+sns.heatmap(df_comp,cmap='plasma',)
+
