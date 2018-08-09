@@ -1,0 +1,63 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
+
+X= table[list of x features]    /  X= table.drop(‘XXX’, axis=1)
+y= table[target variable]
+
+from sklearn.cross_validation import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+from sklearn.linear_model  import LinearRegression
+lm=LinearRegression()
+lm.fit(X_train,y_train)
+print(lm.intercept_)
+lm.coef_
+pd.DataFrame(lm.coef_,X.columns,columns=[ 'Coef '])
+
+P,t-value:
+from scipy import stats
+lm = LinearRegression()
+lm.fit(X_train,y_train)
+params = np.append(lm.intercept_,lm.coef_)
+predictions = lm.predict(X)
+newX = pd.DataFrame({"Constant":np.ones(len(X))}).join(pd.DataFrame(X))
+MSE = (sum((y-predictions)**2))/(len(newX)-len(newX.columns))
+var_b = MSE*(np.linalg.inv(np.dot(newX.T,newX)).diagonal())
+sd_b = np.sqrt(var_b)
+ts_b = params/ sd_b
+p_values =[2*(1-stats.t.cdf(np.abs(i),(len(newX)-1))) for i in ts_b]
+sd_b = np.round(sd_b,3)
+ts_b = np.round(ts_b,3)
+p_values = np.round(p_values,5)
+params = np.round(params,3)
+myDF = pd.DataFrame()
+myDF["Coefficients"],myDF["Standard Errors"],myDF["t values"],myDF["Probabilites"] = [params,sd_b,ts_b,p_values]
+pd.DataFrame(lm.coef_,X.columns,columns=[ 'Coef '])
+print(myDF)
+
+Predictions(evaluation):
+predictions=lm.predict(X_test)
+plt.scatter(y_test, predictions)    #scatter plot see if model is perfect
+plt.xlabel('Y Test')
+plt.ylabel('Predicted Y')
+
+sns.distplot((y_test - predictions),bins=50)    #histogram see if model is perfect
+
+from sklearn import metrics
+print(' MAE' , metrics.mean_absolute_error(y_test, predictions))
+print(' MSE' , metrics.mean_squared_error(y_test, predictions))
+print(' RMSE' , np.sqrt(metrics.mean_squared_error(y_test, predictions)))
+
+
+#r^2 , p-value
+import matplotlib.pyplot as plt
+from scipy import stats
+np.random.seed(12345678)
+x = np.random.random(10)
+y = np.random.random(10)
+slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
+print("r-squared:", r_value**2)
+print('\n')
+print(p_value)
