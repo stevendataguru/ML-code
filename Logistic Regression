@@ -1,0 +1,60 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
+
+X= table[list of x features]
+y= table[target variable]
+from sklearn.cross_validation import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+from sklearn.linear_model import LogisticRegression
+logmodel = LogisticRegression()
+logmodel.fit(X_train, y_train)
+predictions = logmodel.predict(X_test)
+
+from sklearn.metrics import classification_report
+print(classification_report(y_test,predictions))
+print("\n")
+from sklearn.metrics import confusion_matrix
+print(confusion_matrix(y_test,predictions))
+print("\n")
+from sklearn import metrics
+print (metrics.accuracy_score(y_test,predictions))
+
+Threshold Adjust:
+predictions = logmodel.predict(X_test)
+y_pred_prob = logmodel.predict_proba(X_test)
+###histogram
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.rcParams['font.size']=14
+plt.hist(y_pred_prob, bins=?)
+plt.xlim(0,1)
+-------------------
+from sklearn.preprocessing import binarize
+y_pred_class = binarize(y_pred_prob, 0.?)[:,1]  ##smaller increase recall(sensitivity) , :1???class
+
+print(classification_report(y_test, y_pred_class))
+print("\n")
+print(confusion_matrix(y_test, y_pred_class))
+print("\n")
+print (metrics.accuracy_score(y_test, y_pred_class)) 
+
+ROC Curves:
+y_pred_prob = logmodel.predict_proba(X_test)[:,1]
+from sklearn.metrics import roc_curve
+from sklearn.metrics import auc
+fpr,tpr,thresholds = metrics.roc_curve(y_test, y_pred_prob)
+plt.plot(fpr,tpr)
+plt.xlim([0.0,1.0])
+plt.ylim([0.0,1.0])
+plt.title('ROC') 
+plt.xlabel('FP')
+plt.ylabel('TP')
+plt.grid(True)
+
+def evaluate_threshold(threshold):
+    print ('Sensitivity', tpr[thresholds > threshold][-1])
+    print ('Specificity', 1 - fpr[thresholds > threshold][-1])
+evaluate_threshold(X)  #pass X to find 
