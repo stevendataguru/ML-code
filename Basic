@@ -85,3 +85,8 @@ sns.jointplot(x='1',y='2',data=df)
 
 sns.distplot(df[df['credit.policy']==1]['fico'],bins=30)
 sns.distplot(df[df['credit.policy']==0]['fico'],bins=30)
+
+# sns overall heatmap
+corrmat = df.corr()
+f, ax = plt.subplots(figsize=(12, 9))
+sns.heatmap(corrmat, vmax=.8, square=True)
