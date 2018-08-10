@@ -14,6 +14,8 @@ df[[' ',' ']].sort_values(by = ' ', ascending=False)[#:#] # is top #
 
 # drop cols
 df.drop("Id", axis = 1, inplace = True)
+# drop cell
+df = df.drop(df[df['Id'] == 1299].index)
 
 # group by and count/median
 a=df.groupby('columns').nunique()
