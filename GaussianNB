@@ -1,6 +1,9 @@
+from sklearn.cross_validation import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+from sklearn.naive_bayes import GaussianNB
 gnb_clf = GaussianNB()
-gnb_clf.fit(X_training, y_training)
-pred_gnb = gnb_clf.predict(X_valid)
-acc_gnb = accuracy_score(y_valid, pred_gnb)
-
-print(acc_gnb)
+gnb_clf.fit(X_train, y_train)
+pred_gnb = gnb_clf.predict(X_test)
+from sklearn.metrics import classification_report, confusion_matrix
+print(confusion_matrix(y_test, pred_gnb))
+print(classification_report(y_test, pred_gnb))
