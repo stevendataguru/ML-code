@@ -31,6 +31,9 @@ df=df.round(decimals=2)
 cols_to_norm = [ ' ', ' ']
 df[cols_to_norm]=df[cols_to_norm].apply(lambda x: (x-x.min()) / (x.max()-x.min() )
 
+# min, max, mean
+print(train.describe(include=['number']).loc[['min','max','mean']].T.sort_values('max'))
+
 
 # multi cols condition function
 def newage(col):
