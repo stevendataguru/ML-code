@@ -12,9 +12,13 @@ a=df.groupby('columns').median()
 df['column'].value_counts()
 
 #* find all variables in cols
-n = train.select_dtypes(include=object)
+n = df.select_dtypes(include=object)
 for c in n.columns:
-    print('{:<20}'.format(c), train[c].unique())
+    print('{:<20}'.format(c), df[c].unique())
+
+(n = train.select_dtypes(include=object)
+for c in n.columns:
+    print('{:<20}'.format(c), train[c].unique()))
 
 # fill null value
 df['column']= df['column'].fillna('S')
