@@ -23,6 +23,9 @@ df['col'] = df.col.astype(float)
 # round entire table
 df=df.round(decimals=2)
 
+# cols to normalize
+cols_to_norm = [ ' ', ' ']
+df[cols_to_norm]=df[cols_to_norm].apply(lambda x: (x-x.min()) / (x.max()-x.min() )
 
 
 # multi cols condition function
