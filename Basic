@@ -90,3 +90,11 @@ sns.distplot(df[df['credit.policy']==0]['fico'],bins=30)
 corrmat = df.corr()
 f, ax = plt.subplots(figsize=(12, 9))
 sns.heatmap(corrmat, vmax=.8, square=True)
+
+# sns most related feature
+k = 15 #number of variables for heatmap
+cols = corrmat.nlargest(k, 'SalePrice')['SalePrice'].index   # salesprice is the target, change it
+cm = np.corrcoef(train[cols].values.T)  # table name here
+sns.set(font_scale=1.25)
+hm = sns.heatmap(cm, cbar=True, annot=True, square=True, fmt='.2f', annot_kws={'size': 10}, yticklabels=cols.values, xticklabels=cols.values)
+plt.show()
