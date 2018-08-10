@@ -10,7 +10,11 @@ a=df.groupby('columns').median()
 
 # distinct count 
 df['column'].value_counts()
-train.apply(pd.value_counts)   #by entire table, not very good
+
+#* find all variables in cols
+n = train.select_dtypes(include=object)
+for c in n.columns:
+    print('{:<20}'.format(c), train[c].unique())
 
 # fill null value
 df['column']= df['column'].fillna('S')
