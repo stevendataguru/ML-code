@@ -1,0 +1,6 @@
+gnb_clf = GaussianNB()
+gnb_clf.fit(X_training, y_training)
+pred_gnb = gnb_clf.predict(X_valid)
+acc_gnb = accuracy_score(y_valid, pred_gnb)
+
+print(acc_gnb)
