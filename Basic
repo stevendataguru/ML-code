@@ -4,6 +4,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 %matplotlib inline
 
+
+#submission: (test is test table)
+submission = pd.DataFrame({ 'PassengerId': test['PassengerId'],
+                            'Survived': final_preds})
+submission.to_csv("submission.csv", index=False)
+
+
+
 df = pd.read_
 df.head()  /  df.info()  /  df.describe()  /  df.columns
 sns.pairplot(df)
