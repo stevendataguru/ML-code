@@ -1,6 +1,9 @@
 # check if there is null in table
 df.isnull().sum()
 
+# drop cols
+df.drop("Id", axis = 1, inplace = True)
+
 # group by and count/median
 a=df.groupby('columns').nunique()
 a=df.groupby('columns').median()
