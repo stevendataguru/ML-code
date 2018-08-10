@@ -21,7 +21,7 @@ sns.pairplot(df)
 pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
 
-SQL:
+# SQL:
 import pandas as pd
 import pyodbc
 server = ""
@@ -31,11 +31,11 @@ query = '''       '''
 df = pd.read_sql(query, con)
 
 
-save to csv/excel:
+# save to csv/excel:
 df.to_csv('new.csv')
 df.to_excel('new.xlsx')
 
-read from URL table:
+# read from URL table:
 import requests
 import pandas as pd
 
@@ -46,12 +46,12 @@ df = df_list[-1]
 print (df)
 df.to_csv('my data.csv')
 
-import URL:
+# import URL:
 https://stackoverflow.com/questions/10556048/how-to-extract-tables-from-websites-in-python
 https://stackoverflow.com/questions/3969726/attributeerror-module-object-has-no-attribute-urlopen
 
 
-SQL Join, group by, pivot:
+# SQL Join, group by, pivot:
 df=pd.merge(df1,df2,how='inner',left_on=['XXX'],right_on=['YYY'])
 
 newtable = pd.DataFrame(df.groupby(' ')[ ' '].count())       *** beaware of table name, .count()/mean()…
@@ -60,7 +60,7 @@ newtable = df.pivot_table(index='the index want to pivot', columns=' ', values='
 TableA = TableA.join(TableB['column'])      **data+data
 
 
-SQL date filter:
+# SQL date filter:
 df.loc[(df['column'] == 'value') & (df['other column'] == 'value')]
 df.loc[(df['column'].isin('value')]
 df['Date'] = pd.to_datetime(df['Date'])  
@@ -70,11 +70,11 @@ df= df.fillna(0)
 
 df['XXX'] = df['YYY'].apply(function)
 
-Grid:
+# Grid:
 g = sns.FacetGrid(df,col='XXX')
 g.map(plt.hist,'YY')
 
-Seaborn:
+# Seaborn:
 sns.set_style('whitegrid')
 plt.figure(figsize=(11,7))
 
