@@ -2,10 +2,13 @@
 df.isnull().sum()
 
 # total missing data desc
-total = train.isnull().sum().sort_values(ascending=False)
-percent = (train.isnull().sum()/train.isnull().count()).sort_values(ascending=False)
+total = df.isnull().sum().sort_values(ascending=False)
+percent = (df.isnull().sum()/train.isnull().count()).sort_values(ascending=False)
 missing_data = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
 missing_data
+
+df = df.drop((missing_data[missing_data['Percent'] > 0.85]).index,1)  #drop missing data if needed
+
 
 # drop cols
 df.drop("Id", axis = 1, inplace = True)
