@@ -92,6 +92,7 @@ f, ax = plt.subplots(figsize=(12, 9))
 sns.heatmap(corrmat, vmax=.8, square=True)
 
 # sns most related feature
+corrmat = df.corr() #change table name
 k = 15 #number of variables for heatmap
 cols = corrmat.nlargest(k, 'SalePrice')['SalePrice'].index   # salesprice is the target, change it
 cm = np.corrcoef(train[cols].values.T)  # table name here
