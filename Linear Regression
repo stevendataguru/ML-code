@@ -51,6 +51,9 @@ print(' MSE' , metrics.mean_squared_error(y_test, predictions))
 print(' RMSE' , np.sqrt(metrics.mean_squared_error(y_test, predictions)))
 
 
+accuracy = lm.score(X_test,y_test)
+print(accuracy*100,'%')
+
 #r^2 , p-value
 import matplotlib.pyplot as plt
 from scipy import stats
