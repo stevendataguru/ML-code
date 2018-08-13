@@ -201,3 +201,9 @@ def embarked(col):
         return 3
         
 train['newembark']=train[['Embarked']].apply(embarked,axis=1)
+
+
+###put into excel
+Submission = pd.DataFrame({ 'Id': test['Id'],
+                            'SalesPrice': predictions })
+Submission.to_csv("Submission.csv", index=False)
