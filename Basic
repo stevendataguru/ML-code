@@ -4,6 +4,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import tensorflow as tf
 import nltk
+import numpy as np
+import re
+import pickle 
+import bs4 as bs
+import urllib.request
+import heapq
+from nltk.corpus import stopwords
+from sklearn.datasets import load_files
 %matplotlib inline
 
 
