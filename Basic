@@ -160,8 +160,8 @@ df['col'] = df.col.astype(float)
 df=df.round(decimals=2)
 
 # cols to normalize
-cols_to_norm = [ ' ', ' ']
-df[cols_to_norm]=df[cols_to_norm].apply(lambda x: (x-x.min()) / (x.max()-x.min() )
+cols_to_norm = [ ' ', ' ']   #one braket only
+df[cols_to_norm]=df[cols_to_norm].apply(lambda x: (x-x.min()) / (x.max()-x.min()))
 
 # min, max, mean
 print(train.describe(include=['number']).loc[['min','max','mean']].T.sort_values('max'))
