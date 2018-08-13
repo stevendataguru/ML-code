@@ -113,8 +113,8 @@ plt.show();
 df.isnull().sum()
 
 # total missing data desc
-total = df.isnull().sum().sort_values(ascending=False)
-percent = (df.isnull().sum()/train.isnull().count()).sort_values(ascending=False)
+total = df.isnull().sum().sort_values(ascending=False) #table
+percent = (df.isnull().sum()/df.isnull().count()).sort_values(ascending=False)  #2 tables
 missing_data = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
 missing_data
 
