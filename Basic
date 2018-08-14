@@ -78,6 +78,9 @@ df= df.fillna(0)
 
 df['XXX'] = df['YYY'].apply(function)
 
+##easy
+sns.countplot("Class",data=data)
+
 # Grid:
 g = sns.FacetGrid(df,col='XXX')
 g.map(plt.hist,'YY')
