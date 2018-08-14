@@ -78,14 +78,15 @@ df= df.fillna(0)
 
 df['XXX'] = df['YYY'].apply(function)
 
-##easy
-sns.countplot("Class",data=data)
 
 # Grid:
 g = sns.FacetGrid(df,col='XXX')
 g.map(plt.hist,'YY')
 
 # Seaborn:
+#easy
+sns.countplot("Class",data=data)
+
 sns.set_style('whitegrid')
 plt.figure(figsize=(11,7))
 
