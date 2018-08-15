@@ -185,6 +185,9 @@ df2 = df[df['Class']==0].sample(n=3000)
 #union
 dfall = df1.append(df2)
 
+#### reshape pivot table
+https://pandas.pydata.org/pandas-docs/stable/reshaping.html
+
 # multi cols condition function
 def newage(col):
     Age=col[0]
