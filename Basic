@@ -178,6 +178,11 @@ df[cols_to_norm]=df[cols_to_norm].apply(lambda x: (x-x.min()) / (x.max()-x.min()
 # min, max, mean
 print(train.describe(include=['number']).loc[['min','max','mean']].T.sort_values('max'))
 
+#random sample
+df2 = df[df['Class']==0].sample(n=3000)
+
+#union
+dfall = df1.append(df2)
 
 # multi cols condition function
 def newage(col):
