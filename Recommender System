@@ -4,6 +4,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 %matplotlib inline
 
+
+------------------------------------
+       title	Movie name1	Movie name 2
+Userid		
+             0	Score  3.5	5
+             1	   4.5	   1.5
+------------------------------------
+
+
 Startwars_user_ratings = Table(up)['Star Wars']
 Similaritem = Table(up).corrwith(Startwars_user_ratings)
 Corr_Starwars = pd.DataFrame(Similaritem, columns=['Correlation'])
@@ -11,6 +20,14 @@ Corr_Starwars.dropna(inplace=True)
 Corr_Starwars.head
 
 #Memory-based Collaborative Filtering:
+
+---------------------------------------
+	user_id	item_id	rate	timestamp	title
+0	308	1	4	887736532	Toy Story (1995)
+1	287	1	5	875334088	Toy Story (1995)
+2	148	1	4	877019411	Toy Story (1995)
+---------------------------------------
+
 **** column 1, 2 vs others can not change order
 n_users = df.user_id.nunique()
 n_items = df.item_id.nunique()
