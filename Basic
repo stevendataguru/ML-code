@@ -76,6 +76,9 @@ abc=(df['Date']>= ' ')& (df['Date'])
 df.drop(columns=['X', 'C'])   or  df.drop('column',1)
 df= df.fillna(0)    
 
+# inner join 
+merged = pd.merge(DataFrameA,DataFrameB, on=['Code','Date'])
+
 #compare two column values
 df1['pre']=np.where(df1['Adjclose']>=df1['Open'],1,0)
 
