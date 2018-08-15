@@ -79,6 +79,8 @@ df= df.fillna(0)
 #compare two column values
 df1['pre']=np.where(df1['Adjclose']>=df1['Open'],1,0)
 
+# sum col(str) and groupby col
+dfnew = df.groupby('Col').apply(lambda x: x.sum())
 
 # Grid:
 g = sns.FacetGrid(df,col='XXX')
