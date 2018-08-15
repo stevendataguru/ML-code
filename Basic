@@ -74,9 +74,10 @@ df.loc[(df['column'].isin('value')]
 df['Date'] = pd.to_datetime(df['Date'])  
 abc=(df['Date']>= ' ')& (df['Date'])
 df.drop(columns=['X', 'C'])   or  df.drop('column',1)
-df= df.fillna(0)     
+df= df.fillna(0)    
 
-df['XXX'] = df['YYY'].apply(function)
+#compare two column values
+df1['pre']=np.where(df1['Adjclose']>=df1['Open'],1,0)
 
 
 # Grid:
