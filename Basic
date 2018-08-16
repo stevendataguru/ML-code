@@ -169,7 +169,7 @@ df['column']= df['column'].fillna('S')
 df.dropna(subset=['column']).median()     
 
 # get dummies
-pd.get_dummies(df ['Col'],drop_first=True)
+df = pd.get_dummies(df, columns=['col'])
 
 # change datatype
 df['col'] = df.col.astype(float)
