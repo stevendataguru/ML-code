@@ -236,3 +236,12 @@ train['newembark']=train[['Embarked']].apply(embarked,axis=1)
 Submission = pd.DataFrame({ 'Id': test['Id'],
                             'SalesPrice': predictions })
 Submission.to_csv("Submission.csv", index=False)
+
+
+### def function to panda
+def cal(A,B,C):
+  cal1
+  cal2
+  return cal2
+ 
+ df['new']=cal(df.A,df.B,df.C)
