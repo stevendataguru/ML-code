@@ -231,6 +231,21 @@ def embarked(col):
         
 train['newembark']=train[['Embarked']].apply(embarked,axis=1)
 
+### another way to add conditional col
+grades=[]
+for i in df['col']:
+    if 0<=i<=4:
+        grades.append(1)
+    if 5<=i<=9:
+        grades.append(2)
+    if 10<=i<=14:
+        grades.append(3)
+    if 15<=i<=19:
+        grades.append(4)
+    if 20<=i<=24:
+        grades.append(5)
+df['grades']=grades
+
 
 ###put into excel
 Submission = pd.DataFrame({ 'Id': test['Id'],
