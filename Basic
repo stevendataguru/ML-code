@@ -284,3 +284,6 @@ for result in data['result']:
     lng.append(result[u'location'][u'lng'])
     el.append(result[u'elevation'])
 df = pd.DataFrame([lat,lng,el]).T
+
+#rename
+df.rename(index=str, columns={0: "id", 1: "cuisine", 2: "ingredients"})
