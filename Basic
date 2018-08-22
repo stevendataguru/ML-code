@@ -260,3 +260,27 @@ def cal(A,B,C):
   return cal2
  
  df['new']=cal(df.A,df.B,df.C)
+ 
+
+
+####json
+import json
+from pprint import pprint
+with open('C:\\Users\\shuang\\Desktop\\New folder\\train.json') as f:
+    data = json.load(f)
+pprint(data)
+
+col1,col2,col3 = [],[],[]
+for i in data:
+    col1.append(i[u'col'])
+    col2.append(i[u'col2'])
+    col3.append(i[u'col3'])
+df = pd.DataFrame([col1,col2,col3]).T
+
+# one more layer
+lat,lng,el = [],[],[]
+for result in data['result']:
+    lat.append(result[u'location'][u'lat'])
+    lng.append(result[u'location'][u'lng'])
+    el.append(result[u'elevation'])
+df = pd.DataFrame([lat,lng,el]).T
