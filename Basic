@@ -196,6 +196,9 @@ https://pandas.pydata.org/pandas-docs/stable/reshaping.html
 # split panda and only need par tp fhte data (date for example)
 df['release_date'].str.split('-', n=1, expand=True)[0]
 
+#groupby text
+df.groupby(['col1','col1'])['colto'].apply(','.join).reset_index()
+
 # multi cols condition function
 def newage(col):
     Age=col[0]
