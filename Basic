@@ -290,3 +290,7 @@ df = pd.DataFrame([lat,lng,el]).T
 
 #rename
 df.rename(index=str, columns={0: "id", 1: "cuisine", 2: "ingredients"})
+
+## create a dataframe
+d = {'col1': [1, 2], 'col2': [3, 4]}
+df = pd.DataFrame(data=d)
