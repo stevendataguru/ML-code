@@ -75,6 +75,9 @@ df['Date'] = pd.to_datetime(df['Date'])
 abc=(df['Date']>= ' ')& (df['Date'])
 df.drop(columns=['X', 'C'])   or  df.drop('column',1)
 df= df.fillna(0)    
+#null/notnull
+df=df[df["group"].isnull()]
+df=df.loc[df["group"].notnull()]
 
 # inner join 
 merged = pd.merge(DataFrameA,DataFrameB, on=['Code','Date'])
