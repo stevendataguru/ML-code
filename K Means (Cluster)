@@ -29,3 +29,6 @@ ax2.scatter(df['column1'],df['column2'],c=df['Apps'],cmap='rainbow')
 plt.scatter(df.iloc[:,0],df.iloc[:,1], c=kmeans.labels_, cmap='rainbow') 
 plt.scatter(df.iloc[:,0],df.iloc[:,1], cmap='rainbow')
 
+
+#put data back
+df['cluster'] = pd.Series(kmeans.labels_, index=df.index)
