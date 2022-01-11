@@ -14,6 +14,8 @@ from nltk.corpus import stopwords
 from sklearn.datasets import load_files
 %matplotlib inline
 
+df = pd.read_excel (r'Path where the Excel file is stored\File name.xlsx', sheet_name='your Excel sheet name')
+print (df)
 
 #submission: (test is test table)
 submission = pd.DataFrame({ 'PassengerId': test['PassengerId'],
