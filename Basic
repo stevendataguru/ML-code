@@ -302,3 +302,9 @@ df.rename(index=str, columns={0: "id", 1: "cuisine", 2: "ingredients"})
 ## create a dataframe
 d = {'col1': [1, 2], 'col2': [3, 4]}
 df = pd.DataFrame(data=d)
+
+
+r < 0.25	No relationship
+0.25 < r < 0.5	Weak relationship
+0.5 < r < 0.75	Moderate relationship
+r > 0.75	Strong relationship
