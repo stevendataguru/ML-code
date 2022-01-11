@@ -84,6 +84,9 @@ df=df.loc[df["group"].notnull()]
 # inner join 
 merged = pd.merge(DataFrameA,DataFrameB, on=['Code','Date'])
 
+#one hot coding
+pd.get_dummies(df, columns=['gender', 'degree'])
+
 #compare two column values
 df1['pre']=np.where(df1['Adjclose']>=df1['Open'],1,0)
 
